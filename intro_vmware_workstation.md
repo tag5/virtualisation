@@ -15,9 +15,11 @@
 ![vmware](img/vmware_workstation_7.png)
 
 Sélectionner l'iso téléchargée:
+
 ![vmware](img/vmware_workstation_8.png)
 
 Etape inutile:
+
 ![vmware](img/vmware_workstation_9.png)
 
 ![vmware](img/vmware_workstation_10.png)
