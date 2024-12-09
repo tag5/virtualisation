@@ -4,22 +4,34 @@
 
 # Démarrer VMWare Workstation
 ![vmware](img/vmware_workstation_3.png)
+
 ![vmware](img/vmware_workstation_4.png)
+
 ![vmware](img/vmware_workstation_5.png)
+
 ![vmware](img/vmware_workstation_6.png)
 
 # Créer une nouvelle machine virtuelle
 ![vmware](img/vmware_workstation_7.png)
+
 Sélectionner l'iso téléchargée:
 ![vmware](img/vmware_workstation_8.png)
+
 Etape inutile:
 ![vmware](img/vmware_workstation_9.png)
+
 ![vmware](img/vmware_workstation_10.png)
+
 ![vmware](img/vmware_workstation_11.png)
+
 ![vmware](img/vmware_workstation_12.png)
+
 ![vmware](img/vmware_workstation_13.png)
+
 ![vmware](img/vmware_workstation_14.png)
+
 ![vmware](img/vmware_workstation_15.png)
+
 ![vmware](img/vmware_workstation_16.png)
 
 # Premier démarrage de la machine virtuelle:
