@@ -44,3 +44,10 @@ Rappel: Une seconde redirection de port est requise au niveau de la machine virt
 ```
 docker run -it julien237/imagetestgeii:latest
 ```
+
+# Exercice 5
+- Déployez un container docker qui héberge une base de données postgresql.
+- Créez une base de données comportant une simple table: clients (champs id_client et nom)
+- Créez un programme (dans le language de votre choix) qui permet de consulter la liste des clients et de créer un nouveau client. (Ce programme peut être une application console ou une application web) 
+- Embarquez ce programme dans une image Docker.
+- Trouvez une solution pour déployer les deux containers de la manière la plus simple possible (base de données et programme) 
