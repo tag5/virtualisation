@@ -1,4 +1,4 @@
-# Commandes Unix à connaitre
+# 1. Commandes Unix à connaitre
 - pwd
 - ls
 - cd
@@ -22,11 +22,11 @@
 - apt-get install [paquet]
 - systemctl
 
-# Introduction virtualisation
+# 2. Introduction virtualisation
 
 ![virtualisation](img/virtualisation.png)
 
-# VMWare workstation (hyperviseur de type 2)
+# 3. VMWare workstation (hyperviseur de type 2)
 
 ## Téléchargement iso Ubuntu
 ![vmware](img/vmware_workstation_1.png)
@@ -88,7 +88,7 @@ sudo -E apt-get install openssh-server
 ![vmware](img/vmware_workstation_21.png)
 
 
-# Introduction à Docker
+# 4. Introduction à Docker
 
 ## Recap
 
@@ -195,7 +195,7 @@ docker run -it julien237/imagetestgeii:latest
 - Embarquez ce programme dans une image Docker.
 - Trouvez une solution pour déployer les deux containers de la manière la plus simple possible (base de données et programme) 
 
-# VMWare ESXi (hyperviseur de type 1)
+# 5. VMWare ESXi (hyperviseur de type 1)
 
 ## Mise en route
 
