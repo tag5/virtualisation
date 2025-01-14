@@ -1,28 +1,28 @@
 # Commandes Unix à connaitre
-pwd
-ls
-cd
-rm
-mkdir
-rmdir
-rm -rf
-mv
-cp
-touch
-cat
-whoami
-adduser
-usermod -aG [groupe] [utilisateur]
-su
-sudo
-chmod
-ip addr / ifconfig
-gcc
-apt-get update
-apt-get install [paquet]
-systemctl
+- pwd
+- ls
+- cd
+- rm
+- mkdir
+- rmdir
+- rm -rf
+- mv
+- cp
+- touch
+- cat
+- whoami
+- adduser
+- usermod -aG [groupe] [utilisateur]
+- su
+- sudo
+- chmod
+- ip addr / ifconfig
+- gcc
+- apt-get update
+- apt-get install [paquet]
+- systemctl
 
-# Intro virtualisation
+# Introduction virtualisation
 
 ![virtualisation](img/virtualisation.png)
 
@@ -93,11 +93,14 @@ sudo -E apt-get install openssh-server
 ## Recap
 
 ### Installation de docker
+```
 sudo apt-get install docker.io
 sudo usermod -aG docker [utilisateur]
+```
 
 ### Commandes principales
 
+```
 docker pull [nomimage]
 docker images
 
@@ -118,17 +121,22 @@ docker rm [idcontainer]
 docker cp [fichierhote] [idcontainer]:[fichiercontainer]
 
 docker logs [idcontainer]
+```
 
 ### Creation d'une image docker
 
 Dockerfile:
-  FROM
-  COPY
-  CMD
+```
+FROM ...
+COPY ... ...
+CMD ["..."]
+```
 
+```
 docker build -t [nomimage] .
 docker build -t [nomimage]:1.0.0 .
 docker tag [nomimage]:3.0.0 [nomimage]:latest
+```
 
 ### docker compose
 Voir projet TODO
