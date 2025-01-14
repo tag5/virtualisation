@@ -196,3 +196,64 @@ docker run -it julien237/imagetestgeii:latest
 - Trouvez une solution pour déployer les deux containers de la manière la plus simple possible (base de données et programme) 
 
 # VMWare ESXi (hyperviseur de type 1)
+
+## Mise en route
+
+- https://labs.hol.vmware.com/HOL/catalog
+- Rechercher le laboratoire "virtualization 101"
+
+![esxi](img/esxi1.png)
+
+![esxi](img/esxi2.png)
+
+![esxi](img/esxi3.png)
+
+![esxi](img/esxi4.png)
+
+![esxi](img/esxi5.png)
+
+## Création d'une VM
+
+![esxi](img/esxi6.png)
+
+![esxi](img/esxi7.png)
+
+![esxi](img/esxi8.png)
+
+![esxi](img/esxi9.png)
+
+![esxi](img/esxi10.png)
+
+![esxi](img/esxi11.png)
+
+![esxi](img/esxi12.png)
+
+![esxi](img/esxi13.png)
+
+![esxi](img/esxi14.png)
+
+![esxi](img/esxi15.png)
+
+![esxi](img/esxi16.png)
+
+![esxi](img/esxi17.png)
+
+![esxi](img/esxi18.png)
+
+![esxi](img/esxi19.png)
+
+![esxi](img/esxi20.png)
+
+![esxi](img/esxi21.png)
+
+![esxi](img/esxi22.png)
+
+![esxi](img/esxi23.png)
+
+![esxi](img/esxi24.png)
+
+![esxi](img/esxi25.png)
+
+![esxi](img/esxi26.png)
+
+![esxi](img/esxi27.png)
