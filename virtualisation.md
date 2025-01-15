@@ -257,3 +257,37 @@ docker run -it julien237/imagetestgeii:latest
 ![esxi](img/esxi26.png)
 
 ![esxi](img/esxi27.png)
+
+## vSphere Availability (HA)
+
+- Suppression des VMs inutiles
+- Créer une VM: vmtest
+- Associer cette VM à l'hôte esx-01a
+
+![esxi](img/esxi28.png)
+
+![esxi](img/esxi29.png)
+
+![esxi](img/esxi30.png)
+
+![esxi](img/esxi31.png)
+
+![esxi](img/esxi32.png)
+
+![esxi](img/esxi33.png)
+
+![esxi](img/esxi34.png)
+
+![esxi](img/esxi35.png)
+
+- Arret de l'hôte qui héberge la VM:
+
+![esxi](img/esxi36.png)
+
+- La VM est de nouveau disponible sur le second hôte:
+
+![esxi](img/esxi37.png)
+
+- Le fichier est toujours présent:
+
+![esxi](img/esxi38.png)
