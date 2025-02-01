@@ -39,7 +39,7 @@ git commit -m "Création d'un programme de calcul comportant une simple addition
 ## 4. Ajout d'une nouvelle fonctionnalité
 A cette occasion, nous introduisons accidentellement une regression.
 
-Apportons ces modifications à calcul.cpp
+Apportons ces modifications à `calcul.cpp`
 ```cpp
 ...
 // Nouvelle fonctionnalité : multiplication
@@ -92,7 +92,7 @@ Cette commande nous permet de visualiser les lignes supprimées ou rajoutées en
 ```
 
 ## 6. Correction du bug
-Modification de calcul.cpp:
+Modification de `calcul.cpp`:
 ```cpp
 ...
 int addition(int a, int b) {
@@ -137,7 +137,7 @@ feea8a6 Ajout d'une fonctionnalité de multiplication
 
 ## 8. Continuons à ajouter des fonctionnalités
 
-Ajout dans calcul.cpp:
+Ajout dans `calcul.cpp`:
 ```cpp
 ...
 int soustraction(int a, int b) {
@@ -151,7 +151,7 @@ git add calcul.cpp
 git commit -m "Ajout d'une fonctionnalité soustraction"
 ```
 
-Ajout dans calcul.cpp:
+Ajout dans `calcul.cpp`:
 ```cpp
 ...
 int division(int a, int b) {
@@ -222,7 +222,7 @@ git branch branche-modulo
 git switch branche-modulo
 ```
 
-Ajout dans calcul.cpp:
+Ajout dans `calcul.cpp`:
 ```cpp
 int modulo(int a, int b) {
     return a % b;
@@ -239,17 +239,17 @@ Retournons sur la branche principale:
 git switch master
 ```
 
-Observons le contenu de calcul.cpp: Elle ne comporte pas la fonction modulo.
+Observons le contenu de `calcul.cpp`: Elle ne comporte pas la fonction modulo.
 
 Retournons sur la branche "branche-modulo":
 ```sh
 git switch branche-modulo
 ```
-Observons le contenu de calcul.cpp: Vérifiez que que la fonction modulo est toujours présente lorsque nous sommes sur la branche "branche-modulo".
+Observons le contenu de `calcul.cpp`: Vérifiez que que la fonction `modulo` est toujours présente lorsque nous sommes sur la branche `branche-modulo`.
 
 ## 12. Fusion de branches
 
-Fusionnons le contenu de la branche "branche-modulo" vers la branche principale "master":
+Fusionnons le contenu de la branche `branche-modulo` vers la branche principale `master`:
 
 ```sh
 git switch master
