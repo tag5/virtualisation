@@ -273,3 +273,11 @@ gitGraph
     checkout master
     merge branche-modulo
 ```
+
+# Exercices
+
+## Synchronisation avec un dépôt distant
+- Créez un compte github.
+- Créez un dépôt public github.
+- Documentez vous sur les commandes `git clone`, `git pull` et `git push`.
+- Créez un projet (simple) de votre choix  et effectuez des synchronisations entre votre ordinateur et le dépôt github.
