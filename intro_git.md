@@ -259,8 +259,8 @@ git merge branche-modulo
 Récapitulatif:
 
 ```mermaid
+%%{init: { 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchName': 'master'}} }%%
 gitGraph
-    branch master
     checkout master
     commit id:"62e33f4"
     commit id:"feea8a6"
