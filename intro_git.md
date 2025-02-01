@@ -6,7 +6,7 @@ git config --global user.name "Julien"
 git config --global user.email "julien.crypt@gmail.com"
 ```
 
-## 2. Création d'un dossier pour notre projet et initialisation du Dépôt git
+## 2. Création d'un dossier pour notre projet et initialisation du dépôt git
 ```sh
 mkdir projet
 cd projet
@@ -259,14 +259,13 @@ git merge branche-modulo
 Récapitulatif:
 
 ```mermaid
-gitGraph
-   commit id: "62e33f4" tag: "v1.0" type: "Initial Commit" 
-   commit id: "feea8a6" type: "Normal" label: "Ajout d'une fonctionnalité de multiplication"
-   commit id: "2557d4a" tag: "v1.0" type: "Normal" label: "Correction du bug impactant l'addition"
-   commit id: "6743e19" type: "Normal" label: "Ajout d'une fonctionnalité soustraction"
-   commit id: "498e894" tag: "v2.0" type: "Normal" label: "Ajout d'une fonctionnalité division"
-   branch "branche-modulo" from: "498e894"
-   commit id: "4e5f8de" type: "Normal" label: "Ajout de la fonction modulo"
-   checkout to: "master"
-   commit id: "4e5f8de" type: "Normal" label: "Ajout de la fonction modulo"
+graph TD
+    A[62e33f4: Création d'un programme de calcul comportant une simple addition] --> B[feea8a6: Ajout d'une fonctionnalité de multiplication]
+    B --> C[2557d4a: Correction du bug impactant l'addition]
+    C --> D[6743e19: Ajout d'une fonctionnalité soustraction]
+    D --> E[498e894: Ajout d'une fonctionnalité division] 
+    E --> F[4e5f8de: Ajout de la fonction modulo]
+    E --> G[v2.0]
+    A --> H[v1.0]
+    F --> I[branche-modulo]
 ```
