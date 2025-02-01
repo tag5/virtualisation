@@ -274,7 +274,7 @@ gitGraph
     merge branche-modulo
 ```
 
-# Exercices
+# Exercice
 
 ## Synchronisation avec un dépôt distant
 - Créez un compte github.
