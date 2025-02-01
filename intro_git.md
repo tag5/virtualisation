@@ -259,13 +259,17 @@ git merge branche-modulo
 Récapitulatif:
 
 ```mermaid
-graph TD
-    A[62e33f4: Création d'un programme de calcul comportant une simple addition] --> B[feea8a6: Ajout d'une fonctionnalité de multiplication]
-    B --> C[2557d4a: Correction du bug impactant l'addition]
-    C --> D[6743e19: Ajout d'une fonctionnalité soustraction]
-    D --> E[498e894: Ajout d'une fonctionnalité division] 
-    E --> F[4e5f8de: Ajout de la fonction modulo]
-    E --> G[v2.0]
-    A --> H[v1.0]
-    F --> I[branche-modulo]
+gitGraph
+    branch master
+    checkout master
+    commit id:"62e33f4"
+    commit id:"feea8a6"
+    commit id:"2557d4a" tag: "v1.0"
+    commit id:"6743e19"
+    commit id:"498e894" tag: "v2.0"
+    branch branche-modulo
+    checkout branche-modulo
+    commit id:"4e5f8de"
+    checkout master
+    merge branche-modulo
 ```
