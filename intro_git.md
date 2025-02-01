@@ -117,7 +117,7 @@ feea8a6 Ajout d'une fonctionnalité de multiplication
 ```
 
 ## 7. Notion de tag
-Suite à une phase de tests concluante, la version actuelle de notre programme va être distribué auprès d'utilisateurs ou clients.
+Suite à une phase de tests concluante, la version actuelle de notre programme va être distribuée auprès d'utilisateurs ou clients.
 Afin d'assurer une traçabilité des versions, nous allons placer une "étiquette" (tag) sur le dernier commit.
 Il sera ainsi facile, dans le futur, de retrouver l'état du code précis qui correspond à cette version.
 
