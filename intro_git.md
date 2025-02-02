@@ -160,6 +160,8 @@ int division(int a, int b) {
 ...
 ```
 
+Note: Modifiez la fonction main pour ajouter un appel à la fonction division.
+
 ```sh
 git add calcul.cpp
 git commit -m "Ajout d'une fonctionnalité division"
@@ -287,8 +289,7 @@ gitGraph
 - Quelle stratégie proposez-vous pour fournir un correctif aux clients utilisant v1.0 sans leur imposer de migrer vers la version v2.0 ?
 
 <details>
-  <summary>Voir une solution</summary>
-
+  <summary>💡 Voir une solution</summary>
 
 Création d'une branche `hotfix/v1.0`, basée sur `v1.0`.
 Cette branche a vocation d'acceuillir tous les correctifs concernant la version `v1.0`.
@@ -333,9 +334,58 @@ git switch master
 git merge hotfix/v1.0
 ```
 
+Vérifications:
+```sh
+git switch hotfix/v1.0
+git log --oneline     
+efe12b4 (HEAD -> hotfix/v1.0, tag: v1.1) Correction du bug X sur la version 1.0
+2557d4a (tag: v1.0) Correction du bug impactant l'addition
+feea8a6 Ajout d'une fonctionnalité de multiplication
+62e33f4 Création d'un programme de calcul comportant une simple addition
+                                                                                                                              
+git switch hotfix/v2.0
+git log --oneline     
+ffb3db5 (HEAD -> hotfix/v2.0, tag: v2.1) Merge branch 'hotfix/v1.0' into hotfix/v2.0
+efe12b4 (tag: v1.1, hotfix/v1.0) Correction du bug X sur la version 1.0
+498e894 (tag: v2.0) Ajout d'une fonctionnalité division
+6743e19 Ajout d'une fonctionnalité soustraction
+2557d4a (tag: v1.0) Correction du bug impactant l'addition
+feea8a6 Ajout d'une fonctionnalité de multiplication
+62e33f4 Création d'un programme de calcul comportant une simple addition
+```
 </details>
 
-## 2. Synchronisation avec un dépôt distant
+## 2. Créer une image Docker pour chaque version
+- Écrire un Dockerfile pour compiler et exécuter le programme C++.
+- Créer deux images Docker:
+    - Une image pour la version 1 (incluant les correctifs)
+    - Une image pour la version 2 (incluant les correctifs)
+- Exécutez un container pour chaque image
+
+<details>
+  <summary>💡 Voir une solution</summary>
+
+Création d'un Dockerfile
+```Dockerfile
+FROM gcc:latest
+COPY calcul.cpp calcul.cpp
+RUN g++ calcul.cpp
+CMD ["./a.out"]
+```
+
+Création d'une image Docker pour la version 1:
+```sh
+git switch hotfix/v1.0
+docker build -t calcul:v1 .
+```
+
+Création d'un container pour l'image comportant la version 1:
+```sh
+docker run calcul:v1
+```
+</detail>
+
+## 3. Synchronisation avec un dépôt distant
 - Créez un compte github.
 - Créez un dépôt public github.
 - Documentez vous sur les commandes `git clone`, `git pull` et `git push`.
