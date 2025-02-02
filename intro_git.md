@@ -383,7 +383,7 @@ Création d'un container pour l'image comportant la version 1:
 ```sh
 docker run calcul:v1
 ```
-</detail>
+</details>
 
 ## 3. Synchronisation avec un dépôt distant
 - Créez un compte github.
