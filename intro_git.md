@@ -274,9 +274,68 @@ gitGraph
     merge branche-modulo
 ```
 
-# Exercice
+# Exercices
 
-## Synchronisation avec un dépôt distant
+## 1. Gestion d'un correctif pour plusieurs versions
+- Reprenez le projet du tutoriel.
+- Deux versions (v1.0 et v2.0) ont été déployées auprès de différents clients.
+- Supposons qu'un client utilisant la version v1.0 découvre un bug.
+- Après analyse, vous identifiez que ce bug est présent dans toutes les versions de l’application.
+- Vous pouvez corriger ce bug dans le code.
+- Une solution serait d’appliquer le correctif à v2.0 et d’inciter tous les clients à basculer sur cette version.
+- Cependant, certains clients ne veulent pas migrer vers v2.0 car elle introduit de nouvelles fonctionnalités non désirées.
+- Quelle stratégie proposez-vous pour fournir un correctif aux clients utilisant v1.0 sans leur imposer de migrer vers la version v2.0 ?
+
+<details>
+  <summary>Voir une solution</summary>
+
+
+Création d'une branche `hotfix/v1.0`, basée sur `v1.0`.
+Cette branche a vocation d'acceuillir tous les correctifs concernant la version `v1.0`.
+
+```sh
+git branch hotfix/v1.0 v1.0
+git switch hotfix/v1.0
+```
+
+Apporter le correctif sur cette branche.
+On suppose que calcul.cpp a été modifié en conséquence.
+Validons cette modification:
+```sh
+git add calcul.cpp
+git commit -m "Correction du bug X sur la version 1.0"
+```
+
+Créer un tag pour identifier cette correction:
+```sh
+git tag -a v1.1 -m "Version 1.1 : Correction du bug xxx pour v1.0"
+```
+
+Les clients qui utilisent la version `v1.0`, mais qui ne souhaitent pas passer sur la `v2.0` peuvent désormais passer à la version `v1.1`.
+
+Créer une branche `hotfix/v2.0` et y fusionner la branche `hotfix/v1.0`, afin de proposer le correctif aux utilisateurs de la version `v2.0`:
+```sh
+git branch hotfix/v2.0 v2.0
+git switch hotfix/v2.0
+git merge hotfix/v1.0
+```
+
+Créer un tag pour identifier la sous version:
+```
+git tag -a v2.1 -m "Version 2.1 : Correction du bug xxx pour v2.0"
+```
+
+Les clients qui utilisent la version `v2.0` peuvent passer à la version `v2.1`.
+
+Fusionner la branche `hotfix/v1.0` vers `master` pour que les versions futures bénéficient également du correctif.
+```sh
+git switch master
+git merge hotfix/v1.0
+```
+
+</details>
+
+## 2. Synchronisation avec un dépôt distant
 - Créez un compte github.
 - Créez un dépôt public github.
 - Documentez vous sur les commandes `git clone`, `git pull` et `git push`.
