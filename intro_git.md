@@ -276,6 +276,23 @@ gitGraph
     merge branche-modulo
 ```
 
+## Divers
+
+Afficher le status (Fichiers modifiés depuis le dernier commit, branche courante, ...)
+```sh
+git status
+```
+
+Historique des commits:
+```sh
+git log
+```
+
+Afficher la liste des branches:
+```sh
+git branch
+```
+
 # Exercices
 
 ## 1. Gestion d'un correctif pour plusieurs versions
@@ -390,3 +407,28 @@ docker run calcul:v1
 - Créez un dépôt public github.
 - Documentez vous sur les commandes `git clone`, `git pull` et `git push`.
 - Créez un projet (simple) de votre choix  et effectuez des synchronisations entre votre ordinateur et le dépôt github.
+
+<details>
+  <summary>💡 Voir une solution</summary>
+
+- Créez un compte github (Exemple: "tag5")
+- Créez un dépôt public avec ce compte github (Exemple: "todo")
+- Clonez ce dépôt sur votre ordinateur: (le contenu de ce repo est "téléchargé" dans le dossier `todo`)
+```sh
+git clone https://github.com/tag5/todo
+cd todo
+```
+
+- Créez un fichier dans votre dossier local `todo`, puis ajoutez ce fichier à git et validez un commit:
+```sh
+git add main.c
+git commit -m "Essai d'ajout d'un fichier main.c au projet todo"
+```
+
+- Synchronisez votre dépôt local avec le dépôt distant:
+```sh
+git push
+```
+
+- Observez le contenu de votre dépôt distant sur github.
+</details>
