@@ -166,12 +166,20 @@ Rappel: Une seconde redirection de port est requise au niveau de la machine virt
 
 ![redirection](img/redirection.png)
 
+<details>
+  <summary>💡 Voir une solution</summary>
+</details>
+
 ## Exercice 2
 - Vous avez réussi à mettre en place un serveur web et à héberger une page html simple.
 - On souhaite désormais héberger une version html du jeu vidéo tetris.
 - Le code source est disponible à cette adresse: https://github.com/bsord/tetris
 - L’objectif est de pouvoir jouer à tetris depuis votre navigateur.
--	Construisez votre propre image Docker prête à l’emploi, qui intègre le serveur web nginx, ainsi que ce jeu vidéo.
+- Construisez votre propre image Docker prête à l’emploi, qui intègre le serveur web nginx, ainsi que ce jeu vidéo.
+
+<details>
+  <summary>💡 Voir une solution</summary>
+</details>
 
 ## Exercice 3
 - Ecrivez un programme en C qui affiche un message "Hello", suivi d’un numéro de version.
@@ -179,6 +187,10 @@ Rappel: Une seconde redirection de port est requise au niveau de la machine virt
 - Lorsque l’on voudra créer et lancer un container basé sur cette image, le programme devra être exécuté automatiquement.
 - Ecrivez successivement différentes versions de ce programme en changeant simplement le numéro. Imaginez qu’il s’agit en réalité d’un programme plus complexe et que chaque nouvelle version est le fruit de plusieurs semaines de travail.
 - Créez plusieurs images Docker qui embarquent les différentes versions de ce programme. (Utilisez les tags). Faites en sorte que le tag "latest" désigne systématiquement la dernière version disponible.
+
+<details>
+  <summary>💡 Voir une solution</summary>
+</details>
 
 ## Exercice 4
 - Cette image Docker est dépourvue de documentation: https://hub.docker.com/r/julien237/imagetestgeii
@@ -188,12 +200,23 @@ Rappel: Une seconde redirection de port est requise au niveau de la machine virt
 docker run -it julien237/imagetestgeii:latest
 ```
 
+<details>
+  <summary>💡 Voir une solution</summary>
+</details>
+
 ## Exercice 5
 - Déployez un container docker qui héberge une base de données postgresql.
 - Créez une base de données comportant une simple table: clients (champs id_client et nom)
 - Créez un programme (dans le language de votre choix) qui permet de consulter la liste des clients et de créer un nouveau client. (Ce programme peut être une application console ou une application web) 
 - Embarquez ce programme dans une image Docker.
 - Trouvez une solution pour déployer les deux containers de la manière la plus simple possible (base de données et programme) 
+
+<details>
+  <summary>💡 Voir une solution</summary>
+
+- Documentez vous sur `docker compose`
+- Inspirez vous du projet https://github.com/tag5/todo/
+</details>
 
 # 5. VMWare ESXi (hyperviseur de type 1)
 
