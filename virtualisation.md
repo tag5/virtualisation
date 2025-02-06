@@ -168,6 +168,12 @@ Rappel: Une seconde redirection de port est requise au niveau de la machine virt
 
 <details>
   <summary>💡 Voir une solution</summary>
+
+- Créez un dossier volume1.
+- Créez un fichier volume1/index.html
+```sh
+docker run -d -v ./volume1:/usr/share/nginx/html/ -p 80:80 nginx
+```
 </details>
 
 ## Exercice 2
@@ -179,6 +185,11 @@ Rappel: Une seconde redirection de port est requise au niveau de la machine virt
 
 <details>
   <summary>💡 Voir une solution</summary>
+
+```sh
+git clone https://github.com/bsord/tetris
+docker run -d -p 80:80 -v ./tetris:/usr/share/nginx/html/ nginx
+```
 </details>
 
 ## Exercice 3
@@ -190,6 +201,44 @@ Rappel: Une seconde redirection de port est requise au niveau de la machine virt
 
 <details>
   <summary>💡 Voir une solution</summary>
+
+- test.c:
+  ```c
+  #include <stdio.h>
+
+  int main() {
+    printf("Hello\n");
+  }
+  ```
+
+- Dockerfile:
+  ```Dockerfile
+  FROM alpine
+  COPY a.out /a.out
+  CMD ["/a.out"]
+  ```
+
+- Compilation et construction d'une image:
+  ```sh
+  gcc test.c
+  docker build -t monimage:1.0.0 .
+  docker tag monimage:1.0.0 monimage:latest
+  ```
+
+- Version 2:
+  Modifier test.c
+  ```sh
+  gcc test.c
+  docker build -t monimage:2.0.0 .
+  docker tag monimage:2.0.0 monimage:latest
+  ``` 
+
+- Test:
+  ```sh
+  docker run monimage:1.0.0
+  docker run monimage:2.0.0
+  docker run monimage
+  ``` 
 </details>
 
 ## Exercice 4
@@ -202,6 +251,9 @@ docker run -it julien237/imagetestgeii:latest
 
 <details>
   <summary>💡 Voir une solution</summary>
+
+- Depuis une autre console, obtenez un shell sur ce container.
+- Inspectez les fichiers qui se trouvent à la racine...
 </details>
 
 ## Exercice 5
