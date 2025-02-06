@@ -531,7 +531,7 @@ jobs:
   git push
   ```
 
-- Etape 5: Création d'une première version de l'application:
+- Etape 5: Création d'une première version du programme:
   Créez main.cpp, qui affiche le message "Version 1"
   ```sh
   git add main.cpp
@@ -543,7 +543,7 @@ jobs:
 
 Note: Cette version a été tagguée "v1.0"
 
-- Etape 6: Création d'une seconde version de l'application:
+- Etape 6: Evolution apportée au programme: Seconde version:
   Modifiez main.cpp, qui affichera désormais "Version 2"
   ```sh
   git add main.cpp
@@ -552,7 +552,7 @@ Note: Cette version a été tagguée "v1.0"
   ```
   Note: Cette version n'a pas été tagguée.
 
-- Etape 7: Création d'une troisième version de l'application:
+- Etape 7: Evolution apportée au programme: Troisème version:
   ```sh
   git add main.cpp
   git commit -m "Version 3"
@@ -568,5 +568,7 @@ Note: Cette version a été tagguée "v1.0"
   docker run --rm julien237/image-testgha:v2.0
   docker run --rm julien237/image-testgha:v3.0
   ```
-  Note: La version `v2.0` n'est pas disponible. En effet, nous n'avons pas appliqué de tag dans git pour cette version.
+  Notes: 
+    - `julien237` doit être remplacé par votre nom d'utilisateur `Docker hub`.
+    - La version `v2.0` n'est pas disponible. En effet, nous n'avons pas appliqué de tag dans git pour cette version.
 </details>
