@@ -563,12 +563,12 @@ git push --tags
 ```
 Note: Cette version a été tagguée "v3.0"
 
-Etape 8: Tests
-```sh
-docker run --rm julien237/image-testgha:v1.0
-docker run --rm julien237/image-testgha:v2.0
-docker run --rm julien237/image-testgha:v3.0
-```
+- Etape 8: Tests
+  ```sh
+  docker run --rm julien237/image-testgha:v1.0
+  docker run --rm julien237/image-testgha:v2.0
+  docker run --rm julien237/image-testgha:v3.0
+  ```
 
-Note: La version `v2.0` n'est pas disponible. En effet, nous n'avons pas appliqué de tag dans git pour cette version.
+  Note: La version `v2.0` n'est pas disponible. En effet, nous n'avons pas appliqué de tag dans git pour cette version.
 </details>
