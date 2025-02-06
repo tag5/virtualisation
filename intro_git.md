@@ -523,45 +523,44 @@ jobs:
         docker push ${{ secrets.DOCKER_USERNAME }}/image-testgha:latest
 ```
 
-Etape 4: (A effectuer sur votre machine): Ajout des fichiers Dockerfile et docker-build.yml:
-```sh
-git add Dockerfile
-git add .github/workflows/docker-build.yml
-git commit -m "Setup GHA pipeline"
-git push
-```
+- Etape 4: (A effectuer sur votre machine): Ajout des fichiers Dockerfile et docker-build.yml:
+  ```sh
+  git add Dockerfile
+  git add .github/workflows/docker-build.yml
+  git commit -m "Setup GHA pipeline"
+  git push
+  ```
 
-Etape 5: Création d'une première version de l'application:
-Créez main.cpp, qui affiche le message "Version 1"
-```sh
-git add main.cpp
-git commit -m "Version 1"
-git tag -a v1.0 -m v1.0
-git push
-git push --tags
-```
+- Etape 5: Création d'une première version de l'application:
+  Créez main.cpp, qui affiche le message "Version 1"
+  ```sh
+  git add main.cpp
+  git commit -m "Version 1"
+  git tag -a v1.0 -m v1.0
+  git push
+  git push --tags
+  ```
 
 Note: Cette version a été tagguée "v1.0"
 
-Etape 6: Création d'une seconde version de l'application:
-Modifiez main.cpp, qui affichera désormais "Version 2"
-```sh
-git add main.cpp
-git commit -m "Version 2"
-git push
-```
+- Etape 6: Création d'une seconde version de l'application:
+  Modifiez main.cpp, qui affichera désormais "Version 2"
+  ```sh
+  git add main.cpp
+  git commit -m "Version 2"
+  git push
+  ```
+  Note: Cette version n'a pas été tagguée.
 
-Note: Cette version n'a pas été tagguée.
-
-Etape 7: Création d'une troisième version de l'application:
-```sh
-git add main.cpp
-git commit -m "Version 3"
-git tag -a v3.0 -m v3.0
-git push
-git push --tags
-```
-Note: Cette version a été tagguée "v3.0"
+- Etape 7: Création d'une troisième version de l'application:
+  ```sh
+  git add main.cpp
+  git commit -m "Version 3"
+  git tag -a v3.0 -m v3.0
+  git push
+  git push --tags
+  ```
+  Note: Cette version a été tagguée "v3.0"
 
 - Etape 8: Tests
   ```sh
@@ -569,6 +568,5 @@ Note: Cette version a été tagguée "v3.0"
   docker run --rm julien237/image-testgha:v2.0
   docker run --rm julien237/image-testgha:v3.0
   ```
-
   Note: La version `v2.0` n'est pas disponible. En effet, nous n'avons pas appliqué de tag dans git pour cette version.
 </details>
