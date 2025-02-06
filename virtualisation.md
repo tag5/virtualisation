@@ -207,7 +207,7 @@ docker run -d -p 80:80 -v ./tetris:/usr/share/nginx/html/ nginx
   #include <stdio.h>
 
   int main() {
-    printf("Hello\n");
+    printf("Hello Version 1\n");
   }
   ```
 
