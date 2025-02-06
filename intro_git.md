@@ -432,3 +432,143 @@ git push
 
 - Observez le contenu de votre dépôt distant sur github.
 </details>
+
+## 4. Automatisation de la construction et de la distribution d'un programme C++ avec GitHub Actions et Docker
+- Pré-requis:
+   - Créez un compte https://github.com
+   - Documentez vous sur `Github actions`.
+   - Créez un compte https://hub.docker.com
+- Ecrivez un programme C++ simple, qui affiche un numéro de version.
+- Le code source de ce programme devra être versionné à l'aide de Git et Github.
+- On suppose que différentes fonctionnalités sont ajoutées au fil du temps à ce programme.
+- Contentez vous simplement de modifier le numéro de version affiché quand on exécute le programme.
+- Chaque nouvelle version du programme devra:
+  - Etre identifiée par un tag Git.
+  - Etre distribuée sous la forme d’une image Docker.
+- Automatisez, à l'aide de Github Actions, la construction et la publication de ces images sur Docker Hub.
+
+<details>
+  <summary>💡 Voir une solution</summary>
+
+- Etape 1: Création d'un `personal access token (PAT)` sur votre compte hub.docker.com:
+  - Icone utilisateur en haut à droite.
+  - Menu `Account settings`
+  - Rubrique Security: `Personal access tokens`:
+    - Description: Token permettant à GitHub action de se connecter sur mon compte docker hub.
+    - Possibilité de définir une date d'expiration
+    - Permissions: Read & Write
+  - Récupérez ce token, ainsi que votre nom d'utilisateur docker.
+
+- Etape 2: Création d'un dépot vide github:
+  - Créez un nouveau dépot sur votre compte github (exemple: `https://github.com/tag5/testgha`)
+  - Dans la rubrique `settings` de ce dépôt: Menu `Secrets and variables`, puis `Actions`, puis bouton `New repository secret`:
+    - Créez un secret nommé DOCKER_TOKEN, en spécifiant la valeur du token généré sur hub.docker.com.
+    - Créez un secret nommé DOCKER_USERNAME, en spécifiant votre nom d'utilisateur docker.
+  - Clonez ce dépot en local sur votre machine:
+    ```sh
+    git clone git@github.com:tag5/testgha.git
+    cd testgha
+    ```
+
+- Etape 3 (A effectuer sur votre machine):
+  - 3.1 Création d'un fichier Dockerfile: (Ce fichier permet de construire une image docker à partir du binaire de notre programme)
+    ```Dockerfile
+    FROM alpine:latest
+    WORKDIR /
+    COPY app /app
+    RUN chmod +x /app
+    CMD ["./app"]
+    ```
+
+  - 3.2: Création d'un fichier .github/workflows/docker-build.yml: (Ce fichier permet de décrire les opérations que github actions doit effectuer):
+```yml
+name: Build and Push Docker Image
+
+on:                # Conditions de déclenchement:
+  push:
+    tags:
+      - 'v*'       # Un tag a été appliqué et le tag commence par la lettre v (peu importe la branche)
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout du code
+      uses: actions/checkout@v4
+
+    - name: Installer les dépendances C++
+      run: sudo apt update && sudo apt install -y g++
+
+    - name: Compiler le programme
+      run: g++ -static -o app main.cpp
+
+    - name: Récupérer le tag qui a déclenché l'action
+      run: echo "IMAGE_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+    - name: Se connecter à Docker Hub avec un token
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_TOKEN }}
+
+    - name: Construire l'image Docker avec le binaire
+      run: |
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/image-testgha:${{ env.IMAGE_TAG }} .
+        docker tag ${{ secrets.DOCKER_USERNAME }}/image-testgha:${{ env.IMAGE_TAG }} ${{ secrets.DOCKER_USERNAME }}/image-testgha:latest
+
+    - name: Pousser l'image sur Docker Hub
+      run: |
+        docker push ${{ secrets.DOCKER_USERNAME }}/image-testgha:${{ env.IMAGE_TAG }}
+        docker push ${{ secrets.DOCKER_USERNAME }}/image-testgha:latest
+```
+
+Etape 4: (A effectuer sur votre machine): Ajout des fichiers Dockerfile et docker-build.yml:
+```sh
+git add Dockerfile
+git add .github/workflows/docker-build.yml
+git commit -m "Setup GHA pipeline"
+git push
+```
+
+Etape 5: Création d'une première version de l'application:
+Créez main.cpp, qui affiche le message "Version 1"
+```sh
+git add main.cpp
+git commit -m "Version 1"
+git tag -a v1.0 -m v1.0
+git push
+git push --tags
+```
+
+Note: Cette version a été tagguée "v1.0"
+
+Etape 6: Création d'une seconde version de l'application:
+Modifiez main.cpp, qui affichera désormais "Version 2"
+```sh
+git add main.cpp
+git commit -m "Version 2"
+git push
+```
+
+Note: Cette version n'a pas été tagguée.
+
+Etape 7: Création d'une troisième version de l'application:
+```sh
+git add main.cpp
+git commit -m "Version 3"
+git tag -a v3.0 -m v3.0
+git push
+git push --tags
+```
+Note: Cette version a été tagguée "v3.0"
+
+Etape 8: Tests
+```sh
+docker run --rm julien237/image-testgha:v1.0
+docker run --rm julien237/image-testgha:v2.0
+docker run --rm julien237/image-testgha:v3.0
+```
+
+Note: La version `v2.0` n'est pas disponible. En effet, nous n'avons pas appliqué de tag dans git pour cette version.
+</details>
