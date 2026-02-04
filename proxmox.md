@@ -110,7 +110,7 @@ systemctl enable pve-ha-lrm pve-ha-crm --now
 ```
 
 # Création d'une VM HA sur l'un des noeuds
-- Téléchargement d'une image iso debian netinst
+- Téléchargement d'une image iso debian netinst amd64 (https://www.debian.org/CD/netinst/)
 
 - Interface web de gestion de l'un des 3 noeuds:
   - Upload de cette image dans la rubrique "ISO Images"
