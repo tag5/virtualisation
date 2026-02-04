@@ -31,9 +31,8 @@ Création d'une VM pour le premier noeud:
 ![proxmox](img/proxmox/17.png)
 ![proxmox](img/proxmox/18.png)
 ![proxmox](img/proxmox/19.png)
-![proxmox](img/proxmox/20.png)
 
-- Captures d'écran pour le noeud2 (pour info)
+- Captures d'écran pour le noeud2 (pour info):
 ![proxmox](img/proxmox/21.png)
 ![proxmox](img/proxmox/22.png)
 
@@ -56,7 +55,6 @@ Création d'une VM pour le premier noeud:
 ![proxmox](img/proxmox/27.png)
 
 - Sur l'un des 3 noeuds uniquement: Datacenter > Cluster: Bouton "Create Cluster":
-![proxmox](img/proxmox/28.png)
 ![proxmox](img/proxmox/29.png)
 ![proxmox](img/proxmox/30.png)
 
@@ -70,4 +68,56 @@ Création d'une VM pour le premier noeud:
 
 - Voici ce qui doit s'afficher lorsque le cluster comporte 2 noeuds:
 ![proxmox](img/proxmox/33.png)
+
+- S'assurer que le cluster comporte bien 3 noeuds
+
+# Mise en place d'un système de stockage distribué: Ceph
+
+- Opérations à effectuer sur chaque noeud (console ssh root):
+```
+export http_proxy=http://cache.univ-st-etienne.fr:3128
+pveceph install --repository no-subscription
+```
+
+- Sur un seul noeud:
+```
+pveceph init --network 192.168.220.0/24
+```
+
+- Sur chaque noeud: (note: /dev/sdb représente le second disque de 20Go)
+```
+pveceph mon create
+pveceph mgr create
+pveceph osd create /dev/sdb
+```
+
+- Sur un seul noeud: (Vérification)
+```
+ceph -s
+```
+
+- Sur un seul noeud:
+```
+ceph osd pool create pool_stockage_ceph 64
+ceph osd pool set pool_stockage_ceph size 2
+rbd pool init pool_stockage_ceph
+pvesm add rbd ceph-rbd --pool pool_stockage_ceph --content images,rootdir
+```
+
+- Sur chaque noeud:
+```
+systemctl enable pve-ha-lrm pve-ha-crm --now
+```
+
+# Création d'une VM HA sur l'un des noeuds
+- Téléchargement d'une image iso debian netinst
+
+- Interface web de gestion de l'un des 3 noeuds:
+  - Upload de cette image dans la rubrique "ISO Images"
+  - Bouton "Create VM" (en haut)
+  - Sur le premier écran: Cocher "HA"
+  - Disk: Sélectionner le pool de stockage ceph: ceph-rbd
+  - Installer la distribution debian sur cette VM
+
+- Stopper brutalement le noeud qui héberge cette VM
 
