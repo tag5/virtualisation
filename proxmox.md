@@ -79,7 +79,7 @@ export http_proxy=http://cache.univ-st-etienne.fr:3128
 pveceph install --repository no-subscription
 ```
 
-- Sur un seul noeud:
+- Sur un seul noeud: (Meme réseau que les noeuds)
 ```
 pveceph init --network 192.168.220.0/24
 ```
@@ -100,6 +100,7 @@ ceph -s
 ```
 ceph osd pool create pool_stockage_ceph 64
 ceph osd pool set pool_stockage_ceph size 2
+ceph osd pool set pool_stockage_ceph min_size 1
 rbd pool init pool_stockage_ceph
 pvesm add rbd ceph-rbd --pool pool_stockage_ceph --content images,rootdir
 ```
@@ -115,8 +116,9 @@ systemctl enable pve-ha-lrm pve-ha-crm --now
 - Interface web de gestion de l'un des 3 noeuds:
   - Upload de cette image dans la rubrique "ISO Images"
   - Bouton "Create VM" (en haut)
-  - Sur le premier écran: Cocher "HA"
-  - Disk: Sélectionner le pool de stockage ceph: ceph-rbd
+  - Sur le premier écran: Cocher "Add to HA"
+  - Onglet Disk: Sélectionner le pool de stockage ceph: ceph-rbd
+  - Se limite à un disque de 5Go
   - Installer la distribution debian sur cette VM
 
 - Stopper brutalement le noeud qui héberge cette VM
