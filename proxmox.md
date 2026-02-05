@@ -114,12 +114,13 @@ systemctl enable pve-ha-lrm pve-ha-crm --now
 - Téléchargement d'une image iso debian netinst amd64 (https://www.debian.org/CD/netinst/)
 
 - Interface web de gestion de l'un des 3 noeuds:
-  - Upload de cette image dans la rubrique "ISO Images"
+  - Upload de cette image dans la rubrique "ISO Images" (Datacenter > noeudX > local > ISO Images)
   - Bouton "Create VM" (en haut)
   - Sur le premier écran: Cocher "Add to HA"
   - Onglet Disk: Sélectionner le pool de stockage ceph: ceph-rbd
   - Se limite à un disque de 5Go
   - Installer la distribution debian sur cette VM
+  - Penser à retirer l'iso à l'issue de l'installation.
 
 - Stopper brutalement le noeud qui héberge cette VM
 
