@@ -80,8 +80,8 @@ Etape inutile:
 
 ```
 export http_proxy=http://cache.univ-st-etienne.fr:3128
-sudo -E apt-get update
-sudo -E apt-get install openssh-server
+sudo --preserve-env=http_proxy apt-get update
+sudo --preserve-env=http_proxy apt-get install openssh-server
 ```
 
 ## Connexion ssh depuis la machine hote
